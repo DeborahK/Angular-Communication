@@ -1,27 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, QueryList, ElementRef, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { IProduct } from './product';
 import { ProductService } from './product.service';
 import { ProductParameterService } from './product-parameter.service';
+import { StarComponent } from '../shared/star.component';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 @Component({
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, AfterViewInit {
+    //@ViewChild(StarComponent) div: StarComponent;
+    @ViewChildren('star') div: QueryList<StarComponent>;
+    @ViewChild('filterForm') filterForm;
+    @ViewChild('divElement') divElement;
+
     pageTitle: string = 'Product List';
     filteredProducts: IProduct[];
     products: IProduct[];
     errorMessage: string;
+    listFilter: string;
 
-    get listFilter(): string {
-        return this.productParameterService.filterBy;
-    }
-    set listFilter(value: string) {
-        this.productParameterService.filterBy = value;
-        this.filteredProducts = this.performFilter(this.listFilter);
-    }
+    // private _listFilter: string;
+
+    // get listFilter(): string {
+    //     return this._listFilter;
+    // }
+    // set listFilter(value: string) {
+    //     this._listFilter = value;
+    //     this.filteredProducts = this.performFilter(this.listFilter);
+    // }
 
     get showImage(): boolean {
         return this.productParameterService.displayPosters;
@@ -42,7 +54,26 @@ export class ProductListComponent implements OnInit {
             },
             (error: any) => this.errorMessage = <any>error
         );
+        console.log(`In OnInit: ${this.div}`);
     }
+
+    ngAfterViewInit(): void {
+        console.log(`In AfterViewInit: ${this.div.first}`);        
+        // this.div.changes.subscribe((ctrl: QueryList<StarComponent>) => 
+        //                 console.log(`In subscribe: ${ctrl.first.rating}`))
+
+        //this.filterInput.valueChanges.subscribe(value => console.log(value)); 
+        // const x = Observable.fromEvent(this.filterInput.nativeElement, 'input')
+        //                     .subscribe(() =>this.filteredProducts = this.performFilter(this.listFilter)); 
+        this.filterForm.valueChanges.subscribe(() => this.filteredProducts = this.performFilter(this.listFilter));
+        console.log(this.divElement);
+        this.divElement.nativeElement.style.backgroundColor = 'red';
+    }
+
+    // onFilterChange(filterBy: string): void {
+    //     this.listFilter = filterBy;
+    //     this.performFilter(this.listFilter);
+    // }
 
     performFilter(filterBy: string): IProduct[] {
         if (filterBy) {

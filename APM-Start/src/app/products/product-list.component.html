@@ -1,5 +1,5 @@
 ﻿<div class='panel panel-primary'>
-    <div #divElement class='panel-heading'>
+    <div #test class='panel-heading'>
         {{pageTitle}}
     </div>
 
@@ -8,10 +8,7 @@
         <div class='row'>
             <div class='col-md-2'>Filter by:</div>
             <div class='col-md-4'>
-                <!-- <input type='text' [ngModel]='listFilter' (ngModelChange)='onFilterChange($event)' /> -->
-                <form #filterForm="ngForm">
-                    <input type='text' [(ngModel)]='listFilter' name='filterInput' />
-                </form>
+                <input type='text' [(ngModel)]='listFilter' />
             </div>
         </div>
         <div class='row' [hidden]='!listFilter'>
