@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { IProduct } from './product';
 import { ProductService } from './product.service';
-import { StarComponent } from '../shared/star.component';
 
 @Component({
     templateUrl: './product-list.component.html',
@@ -17,8 +15,7 @@ export class ProductListComponent implements OnInit {
     listFilter: string;
     showImage: boolean;
 
-    constructor(private productService: ProductService,
-                private route: ActivatedRoute) { }
+    constructor(private productService: ProductService) { }
 
     ngOnInit(): void {
         this.productService.getProducts().subscribe(
