@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, AfterViewInit, QueryList, ElementRef, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { IProduct } from './product';
 import { ProductService } from './product.service';
@@ -17,7 +16,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     //@ViewChild(StarComponent) div: StarComponent;
    // @ViewChildren('star') div: QueryList<StarComponent>;
    // @ViewChild('filterForm') filterForm;
-    //@ViewChild('title') titleElement: ElementRef;
     @ViewChild('filter') filterElement: ElementRef;
 
     pageTitle: string = 'Product List';
@@ -25,8 +23,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     products: IProduct[];
     errorMessage: string;
     listFilter: string;
-    //get backcolor() { return 'orange'};
-    //backcolor = 'orange';
     
     // private _listFilter: string;
 
@@ -46,8 +42,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     }
 
     constructor(private productService: ProductService,
-                private productParameterService: ProductParameterService,
-                private route: ActivatedRoute) { }
+                private productParameterService: ProductParameterService) { }
 
     ngOnInit(): void {
         this.productService.getProducts().subscribe(
@@ -70,6 +65,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
         //this.filterForm.valueChanges.subscribe(() => this.filteredProducts = this.performFilter(this.listFilter));
         //this.divElement.nativeElement.style.backgroundColor = 'red';
         //console.log(this.divElement.nativeElement.style.backgroundColor);
+        console.log(this.filterElement);
         this.filterElement.nativeElement.focus();
     }
 
