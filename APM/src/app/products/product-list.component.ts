@@ -15,16 +15,19 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
     //@ViewChild(StarComponent) div: StarComponent;
-    @ViewChildren('star') div: QueryList<StarComponent>;
-    @ViewChild('filterForm') filterForm;
-    @ViewChild('divElement') divElement;
+   // @ViewChildren('star') div: QueryList<StarComponent>;
+   // @ViewChild('filterForm') filterForm;
+    //@ViewChild('title') titleElement: ElementRef;
+    @ViewChild('filter') filterElement: ElementRef;
 
     pageTitle: string = 'Product List';
     filteredProducts: IProduct[];
     products: IProduct[];
     errorMessage: string;
     listFilter: string;
-
+    //get backcolor() { return 'orange'};
+    //backcolor = 'orange';
+    
     // private _listFilter: string;
 
     // get listFilter(): string {
@@ -54,20 +57,20 @@ export class ProductListComponent implements OnInit, AfterViewInit {
             },
             (error: any) => this.errorMessage = <any>error
         );
-        console.log(`In OnInit: ${this.div}`);
     }
 
     ngAfterViewInit(): void {
-        console.log(`In AfterViewInit: ${this.div.first}`);        
+        //console.log(`In AfterViewInit: ${this.div.first}`);        
         // this.div.changes.subscribe((ctrl: QueryList<StarComponent>) => 
         //                 console.log(`In subscribe: ${ctrl.first.rating}`))
 
         //this.filterInput.valueChanges.subscribe(value => console.log(value)); 
         // const x = Observable.fromEvent(this.filterInput.nativeElement, 'input')
         //                     .subscribe(() =>this.filteredProducts = this.performFilter(this.listFilter)); 
-        this.filterForm.valueChanges.subscribe(() => this.filteredProducts = this.performFilter(this.listFilter));
-        console.log(this.divElement);
-        this.divElement.nativeElement.style.backgroundColor = 'red';
+        //this.filterForm.valueChanges.subscribe(() => this.filteredProducts = this.performFilter(this.listFilter));
+        //this.divElement.nativeElement.style.backgroundColor = 'red';
+        //console.log(this.divElement.nativeElement.style.backgroundColor);
+        this.filterElement.nativeElement.focus();
     }
 
     // onFilterChange(filterBy: string): void {

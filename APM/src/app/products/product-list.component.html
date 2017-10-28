@@ -1,5 +1,6 @@
 ﻿<div class='panel panel-primary'>
-    <div #divElement class='panel-heading'>
+    <div #title class='panel-heading'>
+        <!-- [ngStyle]="{'background-color': backcolor}"> -->
         {{pageTitle}}
     </div>
 
@@ -10,7 +11,8 @@
             <div class='col-md-4'>
                 <!-- <input type='text' [ngModel]='listFilter' (ngModelChange)='onFilterChange($event)' /> -->
                 <form #filterForm="ngForm">
-                    <input type='text' [(ngModel)]='listFilter' name='filterInput' />
+                    <input #filter type='text' [(ngModel)]='listFilter' name='filterInput' />
+                    <!-- {{ input.focus() }} -->
                 </form>
             </div>
         </div>
