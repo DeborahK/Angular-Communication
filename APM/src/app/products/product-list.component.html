@@ -4,15 +4,18 @@
     </div>
 
     <div class='panel-body'>
+        <!-- <pm-star [rating]='4'></pm-star> -->
+            
         <!-- Filter by the Title   -->
         <div class='row'>
+            <!-- <div class='row' *ngIf='products'> -->
             <div class='col-md-2'>Filter by:</div>
             <div class='col-md-4'>
                 <!-- <input type='text' [ngModel]='listFilter' (ngModelChange)='onFilterChange($event)' /> -->
-                <form #filterForm="ngForm">
-                    <input #filter type='text' [(ngModel)]='listFilter' name='filterInput' />
-                    <!-- {{ input.focus() }} -->
-                </form>
+                <!-- <form #filterForm="ngForm"> -->
+                    <input #inputElement type='text' [(ngModel)]='listFilter' />
+                    <!-- {{ inputElement.focus() }} -->
+                <!-- </form> -->
             </div>
         </div>
         <div class='row' [hidden]='!listFilter'>

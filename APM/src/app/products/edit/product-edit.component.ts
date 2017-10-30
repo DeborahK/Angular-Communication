@@ -44,7 +44,7 @@ export class ProductEditComponent implements OnInit {
     onProductRetrieved(product: IProduct): void {
         // Reset back to pristine
         this.editForm.reset();
-        
+
         this.product = product;
 
         if (this.product.id === 0) {
