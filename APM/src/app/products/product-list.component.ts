@@ -14,7 +14,13 @@ import { Subscription } from 'rxjs/Subscription';
     styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
-    // @ViewChild(StarComponent) div: StarComponent;
+    pageTitle: string = 'Product List';
+    filteredProducts: IProduct[];
+    products: IProduct[];
+    errorMessage: string;
+    //listFilter: string;
+
+   // @ViewChild(StarComponent) div: StarComponent;
     // @ViewChildren('star') div: QueryList<StarComponent>;
     // @ViewChild('filterForm') filterForm;
     // @ViewChild('filter') filterInput: NgModel;
@@ -23,8 +29,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     private _sub: Subscription;
     // @ViewChildren('inputElement, nameElement') inputElements: QueryList<ElementRef>;
     @ViewChildren(NgModel) inputElements: QueryList<FormControl>;
-
-    filterName: string;
 
     // get filterInput(): NgModel {
     //     return this._filterInput;
@@ -43,21 +47,15 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     //     }
     // }
 
-    pageTitle: string = 'Product List';
-    filteredProducts: IProduct[];
-    products: IProduct[];
-    errorMessage: string;
-    listFilter: string;
+    private _listFilter: string;
 
-    // private _listFilter: string;
-
-    // get listFilter(): string {
-    //     return this._listFilter;
-    // }
-    // set listFilter(value: string) {
-    //     this._listFilter = value;
-    //     this.performFilter(this.listFilter);
-    // }
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(value: string) {
+        this._listFilter = value;
+        this.performFilter(this.listFilter);
+    }
 
     get showImage(): boolean {
         return this.productParameterService.displayPosters;
@@ -67,7 +65,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     }
 
     constructor(private productService: ProductService,
-        private productParameterService: ProductParameterService) { }
+                private productParameterService: ProductParameterService) { }
 
     ngOnInit(): void {
         this.productService.getProducts().subscribe(
@@ -80,16 +78,10 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        // console.log(`In AfterViewInit: ${this.div.first}`);
-        // this.div.changes.subscribe((ctrl: QueryList<StarComponent>) =>
-        //                 console.log(`In subscribe: ${ctrl.first.rating}`))
-
         // this.filterInput.valueChanges.subscribe(value => console.log(value));
         // const x = Observable.fromEvent(this.filterInput.nativeElement, 'input')
         //                     .subscribe(() =>this.filteredProducts = this.performFilter(this.listFilter));
         // this.filterForm.valueChanges.subscribe(() => this.filteredProducts = this.performFilter(this.listFilter));
-        // this.divElement.nativeElement.style.backgroundColor = 'red';
-        // console.log(this.divElement.nativeElement.style.backgroundColor);
         // console.log(this.filterInput);
         // this.filterInput.valueChanges.subscribe(
         //     value => this.performFilter(this.listFilter)
