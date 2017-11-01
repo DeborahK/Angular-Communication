@@ -43,8 +43,8 @@
                             <img *ngIf='showImage'
                                 [src]='product.imageUrl'
                                 [title]='product.productName'
-                                [style.width.px]='50'
-                                [style.margin.px]='2'>
+                                [style.width.px]='imageWidth'
+                                [style.margin.px]='imageMargin'>
                         </td>
                         <td><a [routerLink]="['/products', product.id]">
                                 {{ product.productName }}

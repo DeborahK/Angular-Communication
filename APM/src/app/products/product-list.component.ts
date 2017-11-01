@@ -15,11 +15,14 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
     pageTitle: string = 'Product List';
+    imageWidth: number = 50;
+    imageMargin: number = 2;
     filteredProducts: IProduct[];
     products: IProduct[];
     errorMessage: string;
-    //listFilter: string;
+    // listFilter: string;
 
+    @ViewChild('inputElement') filterElement;
    // @ViewChild(StarComponent) div: StarComponent;
     // @ViewChildren('star') div: QueryList<StarComponent>;
     // @ViewChild('filterForm') filterForm;
@@ -29,7 +32,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     private _sub: Subscription;
     // @ViewChildren('inputElement, nameElement') inputElements: QueryList<ElementRef>;
     @ViewChildren(NgModel) inputElements: QueryList<FormControl>;
-
+    @ViewChild('divElementVar') divElement;
     // get filterInput(): NgModel {
     //     return this._filterInput;
     // }
@@ -86,9 +89,11 @@ export class ProductListComponent implements OnInit, AfterViewInit {
         // this.filterInput.valueChanges.subscribe(
         //     value => this.performFilter(this.listFilter)
         // );
-        // this.filterElement.nativeElement.focus();
-        console.log(this.inputElements);
+        this.filterElement.nativeElement.focus();
+        // const ele = this.renderer.selectRootElement(`#inputId`);
+        // ele.focus();
 
+        console.log(this.inputElements);
 
         console.log('About to subscribe');
         this.inputElements.first.valueChanges.subscribe(() => {
