@@ -9,13 +9,15 @@ import { ProductService } from './product.service';
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
-    imageWidth: number = 50;
-    imageMargin: number = 2;
-    filteredProducts: IProduct[];
-    products: IProduct[];
-    errorMessage: string;
     listFilter: string;
     showImage: boolean;
+
+    imageWidth: number = 50;
+    imageMargin: number = 2;
+    errorMessage: string;
+
+    filteredProducts: IProduct[];
+    products: IProduct[];
 
     constructor(private productService: ProductService) { }
 
@@ -29,6 +31,10 @@ export class ProductListComponent implements OnInit {
         );
     }
 
+    toggleImage(): void {
+        this.showImage = !this.showImage;
+    }
+
     performFilter(filterBy: string): void {
         if (filterBy) {
             filterBy = filterBy.toLocaleLowerCase();
@@ -37,9 +43,5 @@ export class ProductListComponent implements OnInit {
         } else {
             this.filteredProducts = this.products;
         }
-    }
-
-    toggleImage(): void {
-        this.showImage = !this.showImage;
     }
 }
