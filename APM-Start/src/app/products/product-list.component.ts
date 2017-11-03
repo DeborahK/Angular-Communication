@@ -9,6 +9,8 @@ import { ProductService } from './product.service';
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
+    imageWidth: number = 50;
+    imageMargin: number = 2;
     filteredProducts: IProduct[];
     products: IProduct[];
     errorMessage: string;
@@ -21,19 +23,19 @@ export class ProductListComponent implements OnInit {
         this.productService.getProducts().subscribe(
             (products: IProduct[]) => {
                 this.products = products;
-                this.filteredProducts = this.performFilter(this.listFilter);
+                this.performFilter(this.listFilter);
             },
             (error: any) => this.errorMessage = <any>error
         );
     }
 
-    performFilter(filterBy: string): IProduct[] {
+    performFilter(filterBy: string): void {
         if (filterBy) {
             filterBy = filterBy.toLocaleLowerCase();
-            return this.products.filter((product: IProduct) =>
+            this.filteredProducts = this.products.filter((product: IProduct) =>
                 product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
         } else {
-            return this.products;
+            this.filteredProducts = this.products;
         }
     }
 

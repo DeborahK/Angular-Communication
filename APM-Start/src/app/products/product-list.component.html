@@ -1,5 +1,5 @@
 ﻿<div class='panel panel-primary'>
-    <div #test class='panel-heading'>
+    <div class='panel-heading'>
         {{pageTitle}}
     </div>
 
@@ -39,11 +39,11 @@
                 <tbody>
                     <tr *ngFor='let product of filteredProducts'>
                         <td>
-                            <img *ngIf='showImage'
+                            <img *ngIf='showImage && product.imageUrl'
                                 [src]='product.imageUrl'
                                 [title]='product.productName'
-                                [style.width.px]='50'
-                                [style.margin.px]='2'>
+                                [style.width.px]='imageWidth'
+                                [style.margin.px]='imageMargin'>
                         </td>
                         <td><a [routerLink]="['/products', product.id]">
                                 {{ product.productName }}
@@ -51,10 +51,10 @@
 						</td>
                         <td>{{ product.productCode | lowercase }}</td>
                         <td>{{ product.releaseDate }}</td>
-                        <td>{{ product.price | currency:'USD':true:'1.2-2'}}</td>
+                        <td>{{ product.price | currency:'USD':'symbol':'1.2-2'}}</td>
                         <td>
                             <pm-star [rating]='product.starRating'
-                                (ratingClicked)='onRatingClicked($event)'>
+                                     (ratingClicked)='onRatingClicked($event)'>
 							</pm-star>
                         </td>
                         <td>

@@ -8,7 +8,7 @@
               novalidate
               #productForm="ngForm"
               (ngSubmit)="saveProduct()">
-            <fieldset>
+            <fieldset *ngIf="product">
                 <div class="form-group" 
                      [ngClass]="{'has-error': (productNameVar.touched || 
                                                productNameVar.dirty || product.id !== 0) && 
@@ -101,4 +101,7 @@
             </fieldset>
         </form>
     </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
 </div>

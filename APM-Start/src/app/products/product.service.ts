@@ -38,9 +38,17 @@ export class ProductService {
     private handleError(err: HttpErrorResponse): ErrorObservable {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
-        const errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
-        console.error(errorMessage);
-        return Observable.throw(errorMessage);
+        let errorMessage: string;
+        if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            errorMessage = `An error occurred: ${err.error.message}`;
+        } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            errorMessage = `Backend returned code ${err.status}, body was: ${err.error}`;
+        }
+        console.error(err);
+        return new ErrorObservable(errorMessage);
     }
 
     deleteProduct(id: number): Observable<Response> {
@@ -49,7 +57,7 @@ export class ProductService {
         const url = `${this.productsUrl}/${id}`;
         return this.http.delete<IProduct>(url, { headers: headers} )
                         .pipe(
-                            tap(data => console.log('deleteProduct: ' + JSON.stringify(data))),
+                            // tap(data => console.log('deleteProduct: ' + JSON.stringify(data))),
                             catchError(this.handleError)
                         );
     }
@@ -66,7 +74,7 @@ export class ProductService {
         product.id = undefined;
         return this.http.post<IProduct>(this.productsUrl, product,  { headers: headers} )
                         .pipe(
-                            tap(data => console.log('createProduct: ' + JSON.stringify(data))),
+                            // tap(data => console.log('createProduct: ' + JSON.stringify(data))),
                             catchError(this.handleError)
                         );
     }
@@ -91,7 +99,7 @@ export class ProductService {
         const url = `${this.productsUrl}/${product.id}`;
         return this.http.put<IProduct>(url, product, { headers: headers} )
                         .pipe(
-                            tap(data => console.log('updateProduct: ' + JSON.stringify(data))),
+                            // tap(data => console.log('updateProduct: ' + JSON.stringify(data))),
                             catchError(this.handleError)
                         );
     }

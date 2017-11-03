@@ -45,6 +45,7 @@ export class ProductEditComponent implements OnInit {
         // Reset back to pristine
         this.editForm.reset();
 
+        // Display the data in the form
         this.product = product;
 
         if (this.product.id === 0) {

@@ -24,7 +24,7 @@
                 </div>
                 <div class='row'>
                     <div class='col-md-3'>Price:</div>
-                    <div class='col-md-6'>{{product.price|currency:'USD':true}}</div>
+                    <div class='col-md-6'>{{product.price|currency:'USD':'symbol'}}</div>
                 </div>
                 <div class='row'>
                     <div class='col-md-3'>5 Star Rating:</div>
@@ -36,7 +36,8 @@
             </div>
 
             <div class='col-md-6'>
-                <img class='center-block img-responsive' 
+                <img *ngIf='product.imageUrl'
+                     class='center-block img-responsive' 
                      [style.width.px]='200' 
                      [style.margin.px]='2' 
                      [src]='product.imageUrl'
@@ -53,4 +54,7 @@
             Edit
         </a>
     </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
 </div>
