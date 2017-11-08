@@ -6,7 +6,8 @@ import { StarComponent } from './star.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     StarComponent

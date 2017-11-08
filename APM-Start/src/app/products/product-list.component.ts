@@ -35,11 +35,10 @@ export class ProductListComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
-    performFilter(filterBy: string): void {
+    performFilter(filterBy?: string): void {
         if (filterBy) {
-            filterBy = filterBy.toLocaleLowerCase();
             this.filteredProducts = this.products.filter((product: IProduct) =>
-                product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+                product.productName.toLocaleLowerCase().indexOf(filterBy.toLocaleLowerCase()) !== -1);
         } else {
             this.filteredProducts = this.products;
         }

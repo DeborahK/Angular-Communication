@@ -83,15 +83,15 @@ export class ProductService {
         // Return an initialized object
         return {
             'id': 0,
-            productName: null,
-            productCode: null,
-            category: null,
+            productName: '',
+            productCode: '',
+            category: '',
             tags: [],
-            releaseDate: null,
-            price: null,
-            description: null,
-            starRating: null,
-            imageUrl: null
+            releaseDate: '',
+            price: 0,
+            description: '',
+            starRating: 0,
+            imageUrl: ''
         };
     }
 
