@@ -16,7 +16,7 @@ export class ProductEditComponent implements OnInit {
     product: IProduct;
 
     get isDirty(): boolean {
-        return this.editForm.dirty;
+        return this.editForm.dirty ? true : false;
     }
 
     constructor(private productService: ProductService,
@@ -63,10 +63,7 @@ export class ProductEditComponent implements OnInit {
     }
 
     deleteProduct(): void {
-        if (this.product.id === 0) {
-            // Don't delete, it was never saved.
-            this.onSaveComplete();
-        } else {
+        if (this.product.id) {
             if (confirm(`Really delete the product: ${this.product.productName}?`)) {
                 this.productService.deleteProduct(this.product.id)
                     .subscribe(
@@ -74,6 +71,9 @@ export class ProductEditComponent implements OnInit {
                         (error: any) => this.errorMessage = <any>error
                     );
             }
+        } else {
+            // Don't delete, it was never saved.
+            this.onSaveComplete();
         }
     }
 
