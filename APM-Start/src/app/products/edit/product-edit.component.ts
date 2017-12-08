@@ -56,8 +56,6 @@ export class ProductEditComponent implements OnInit {
     }
 
     cancel(): void {
-        // Reset back to pristine
-        this.editForm.reset();
         // Navigate back to the product list
         this.router.navigate(['/products']);
     }

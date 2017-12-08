@@ -4,7 +4,7 @@ import { IUser } from './user';
 
 @Injectable()
 export class AuthService {
-    currentUser: IUser | undefined;
+    currentUser: IUser | null;
     redirectUrl: string;
 
     constructor() {  }
@@ -25,6 +25,6 @@ export class AuthService {
     }
 
     logout(): void {
-        this.currentUser = undefined;
+        this.currentUser = null;
     }
 }

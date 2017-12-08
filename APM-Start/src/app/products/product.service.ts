@@ -71,7 +71,7 @@ export class ProductService {
     }
 
     private createProduct(product: IProduct, headers: HttpHeaders): Observable<IProduct> {
-        product.id = undefined;
+        product.id = null;
         return this.http.post<IProduct>(this.productsUrl, product,  { headers: headers} )
                         .pipe(
                             tap(data => console.log('createProduct: ' + JSON.stringify(data))),
