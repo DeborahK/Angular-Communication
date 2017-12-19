@@ -19,8 +19,11 @@ export class ProductDetailComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const id = +this.route.snapshot.paramMap.get('id');
-        this.getProduct(id);
+        const param = this.route.snapshot.paramMap.get('id');
+        if (param) {
+            const id = +param;
+            this.getProduct(id);
+        }
     }
 
     getProduct(id: number) {
@@ -28,7 +31,7 @@ export class ProductDetailComponent implements OnInit {
           product => this.product = product,
           error => this.errorMessage = <any>error
         );
-      }
+    }
 
     onBack(): void {
         this.router.navigate(['/products']);

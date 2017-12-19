@@ -99,7 +99,7 @@ export class ProductService {
         const url = `${this.productsUrl}/${product.id}`;
         return this.http.put<IProduct>(url, product, { headers: headers} )
                         .pipe(
-                            tap(data => console.log('updateProduct: ' + JSON.stringify(data))),
+                            tap(data => console.log('updateProduct: ' + product.id)),
                             catchError(this.handleError)
                         );
     }

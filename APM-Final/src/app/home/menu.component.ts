@@ -15,7 +15,10 @@ export class MenuComponent implements OnInit {
   }
 
   get userName(): string {
-    return this.authService.currentUser.userName;
+    if (this.authService.currentUser) {
+      return this.authService.currentUser.userName;
+    }
+    return '';
   }
 
   constructor(private router: Router,

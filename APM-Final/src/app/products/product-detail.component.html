@@ -36,7 +36,8 @@
             </div>
 
             <div class='col-md-6'>
-                <img class='center-block img-responsive' 
+                <img *ngIf='product.imageUrl'
+                     class='center-block img-responsive' 
                      [style.width.px]='200' 
                      [style.margin.px]='2' 
                      [src]='product.imageUrl'
@@ -53,4 +54,7 @@
             Edit
         </a>
     </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
 </div>

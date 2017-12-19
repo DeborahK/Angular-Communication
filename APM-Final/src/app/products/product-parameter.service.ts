@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ProductParameterService {
-    filterBy: string = '';
-    displayPosters = false;
+  showImage: boolean;
+  filterBy: string;
+
+  constructor() { }
+
 }

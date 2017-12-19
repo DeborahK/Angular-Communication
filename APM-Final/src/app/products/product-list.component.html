@@ -6,16 +6,11 @@
     <div class='panel-body'>
         <!-- Filter by the Title   -->
         <div class='row'>
-            <div class='col-md-2'>Filter by:</div>
-            <div class='col-md-4'>
-                <input #inputElement type='text' [(ngModel)]='listFilter' />
-                <!-- <input type='text' [ngModel]='listFilter' (ngModelChange)='onFilterChange($event)' /> -->
-            </div>
-        </div>
-        <div class='row' [hidden]='!listFilter'>
-            <div class='col-md-6'>
-                <h3>Filtered by: {{listFilter}} </h3>
-            </div>
+            <pm-criteria #filterCriteria class='col-md-10'
+                [displayDetail]='includeDetail'
+                [hitCount]='filteredProducts?.length'
+                (valueChange)='onValueChange($event)'>
+            </pm-criteria>
         </div>
 
         <div class='table-responsive'>
@@ -40,17 +35,17 @@
                 <tbody>
                     <tr *ngFor='let product of filteredProducts'>
                         <td>
-                            <img *ngIf='showImage'
-                                [src]='product.imageUrl'
-                                [title]='product.productName'
-                                [style.width.px]='imageWidth'
-                                [style.margin.px]='imageMargin'>
+                            <img *ngIf='showImage && product.imageUrl'
+                                 [src]='product.imageUrl'
+                                 [title]='product.productName'
+                                 [style.width.px]='imageWidth'
+                                 [style.margin.px]='imageMargin'>
                         </td>
                         <td><a [routerLink]="['/products', product.id]">
                                 {{ product.productName }}
                             </a>
 						</td>
-                        <td>{{ product.productCode | lowercase }}</td>
+                        <td>{{ product.productCode }}</td>
                         <td>{{ product.releaseDate }}</td>
                         <td>{{ product.price | currency:'USD':'symbol':'1.2-2'}}</td>
                         <td>
