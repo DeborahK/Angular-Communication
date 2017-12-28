@@ -28,8 +28,9 @@ export class CriteriaComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    (this.filterElementRef.nativeElement) &&
+    if (this.filterElementRef.nativeElement) {
       this.filterElementRef.nativeElement.focus();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
