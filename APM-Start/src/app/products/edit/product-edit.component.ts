@@ -85,7 +85,7 @@ export class ProductEditComponent implements OnInit {
                     // Assign the changes from the copy
                     Object.keys(this.product).forEach(key =>
                         this.originalProduct[key] = this.product[key]
-                    )
+                    );
                     this.onSaveComplete();
                 },
                 (error: any) => this.errorMessage = <any>error
