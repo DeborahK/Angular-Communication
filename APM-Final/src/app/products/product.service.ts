@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { of } from 'rxjs/observable/of';
 
-import { catchError, tap, map } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { IProduct } from './product';
 import { Subject } from 'rxjs/Subject';
@@ -31,7 +31,7 @@ export class ProductService {
         return this.http.get<IProduct[]>(this.productsUrl)
                         .pipe(
                             tap(data => console.log(JSON.stringify(data))),
-                            map(data => this.products = data),
+                            tap(data => this.products = data),
                             catchError(this.handleError)
                         );
     }
@@ -77,7 +77,7 @@ export class ProductService {
         return this.http.delete<IProduct>(url, { headers: headers} )
                         .pipe(
                             tap(data => console.log('deleteProduct: ' + id)),
-                            map(data => {
+                            tap(data => {
                                 const foundIndex = this.products.findIndex(item => item.id === id);
                                 if (foundIndex > -1) {
                                     this.products.splice(foundIndex, 1);
@@ -101,7 +101,7 @@ export class ProductService {
         return this.http.post<IProduct>(this.productsUrl, product,  { headers: headers} )
                         .pipe(
                             tap(data => console.log('createProduct: ' + JSON.stringify(data))),
-                            map(data => {
+                            tap(data => {
                                 this.products.push(data);
                                 this.changeSelectedProduct(data);
                             }),
