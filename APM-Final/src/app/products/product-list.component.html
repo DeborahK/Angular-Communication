@@ -4,7 +4,7 @@
     </div>
 
     <div class='panel-body'>
-        <!-- Filter by the Title   -->
+        <!-- Filter by the Title -->
         <div class='row'>
             <pm-criteria #filterCriteria class='col-md-10'
                 [displayDetail]='includeDetail'
@@ -15,7 +15,7 @@
 
         <div class='table-responsive'>
             <table class='table'
-                    *ngIf='products && products.length'>
+                    *ngIf='products?.length'>
                 <thead>
                     <tr>
                         <th>

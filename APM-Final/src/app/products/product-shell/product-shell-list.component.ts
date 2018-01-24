@@ -12,8 +12,8 @@ export class ProductShellListComponent implements OnInit, OnDestroy {
   pageTitle: string = 'Products';
   errorMessage: string;
   products: IProduct[];
-  sub: Subscription;
   selectedProduct: IProduct | null;
+  sub: Subscription;
 
   constructor(private productService: ProductService) { }
 
@@ -30,7 +30,7 @@ export class ProductShellListComponent implements OnInit, OnDestroy {
     );
   }
 
-  onSelected(product: IProduct) {
+  onSelected(product: IProduct): void {
     this.productService.changeSelectedProduct(product);
   }
 

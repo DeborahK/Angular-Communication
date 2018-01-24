@@ -15,6 +15,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class ProductService {
     private productsUrl = 'api/products';
     private products: IProduct[];
+
     private selectedProductSource = new BehaviorSubject<IProduct | null>(null);
     selectedProductChanges$ = this.selectedProductSource.asObservable();
 
@@ -22,7 +23,7 @@ export class ProductService {
 
     changeSelectedProduct(selectedProduct: IProduct | null): void {
         this.selectedProductSource.next(selectedProduct);
-      }
+    }
 
     getProducts(): Observable<IProduct[]> {
         if (this.products) {
@@ -64,7 +65,6 @@ export class ProductService {
 
     deleteProduct(id: number): Observable<IProduct> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
         const url = `${this.productsUrl}/${id}`;
         return this.http.delete<IProduct>(url, { headers: headers} )
                         .pipe(

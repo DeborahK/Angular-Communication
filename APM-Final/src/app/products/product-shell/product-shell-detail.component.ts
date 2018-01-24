@@ -3,13 +3,13 @@ import { ProductService } from '../product.service';
 import { IProduct } from '../product';
 import { Subscription } from 'rxjs/Subscription';
 
-
 @Component({
     selector: 'pm-product-shell-detail',
     templateUrl: './product-shell-detail.component.html'
 })
 export class ProductShellDetailComponent implements OnInit, OnDestroy {
     pageTitle: string = 'Product Detail';
+
     product: IProduct | null;
     sub: Subscription;
 
@@ -24,4 +24,5 @@ export class ProductShellDetailComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
+
 }
