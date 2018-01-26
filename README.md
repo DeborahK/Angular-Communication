@@ -1,6 +1,5 @@
 # Angular-Communication
 Materials for the "Angular Component Communications" course on Pluralsight.
-// ["Angular Component Communications"](http://bit.ly/Angular-GettingStarted)
 
 `APM-Start`: The starter files set up for use in VSCode, WebStorm, or other editors. **Use this to code along with the course**. (Currently set to <i>Angular version 5 or higher</i>)
 
