@@ -1,5 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit,
-         Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  EventEmitter,
+  Output
+} from '@angular/core';
 
 @Component({
   selector: 'pm-criteria',
@@ -10,8 +20,7 @@ export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() displayDetail: boolean;
   @Input() hitCount: number;
   hitMessage: string;
-  @Output() valueChange: EventEmitter<string> =
-              new EventEmitter<string>();
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('filterElement') filterElementRef: ElementRef;
 
@@ -24,7 +33,7 @@ export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
     this.valueChange.emit(value);
   }
 
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit(): void {
     if (this.filterElementRef.nativeElement) {
@@ -40,7 +49,5 @@ export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
