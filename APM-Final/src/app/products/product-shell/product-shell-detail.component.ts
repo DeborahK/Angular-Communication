@@ -4,25 +4,24 @@ import { IProduct } from '../product';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-    selector: 'pm-product-shell-detail',
-    templateUrl: './product-shell-detail.component.html'
+  selector: 'pm-product-shell-detail',
+  templateUrl: './product-shell-detail.component.html'
 })
 export class ProductShellDetailComponent implements OnInit, OnDestroy {
-    pageTitle: string = 'Product Detail';
+  pageTitle: string = 'Product Detail';
 
-    product: IProduct | null;
-    sub: Subscription;
+  product: IProduct | null;
+  sub: Subscription;
 
-    constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {}
 
-    ngOnInit() {
-        this.sub = this.productService.selectedProductChanges$.subscribe(
-            selectedProduct => this.product = selectedProduct
-        );
-    }
+  ngOnInit() {
+    this.sub = this.productService.selectedProductChanges$.subscribe(
+      selectedProduct => (this.product = selectedProduct)
+    );
+  }
 
-    ngOnDestroy(): void {
-        this.sub.unsubscribe();
-    }
-
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 }

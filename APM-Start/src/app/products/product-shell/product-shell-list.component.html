@@ -5,9 +5,7 @@
 
   <div class='panel-body'>
     <div class='list-group'>
-      <button type='button'
-              class='list-group-item'
-              *ngFor='let product of products'>
+      <button type='button' class='list-group-item' *ngFor='let product of products'>
         {{ product.productName }} ({{ product.productCode }})
       </button>
     </div>
