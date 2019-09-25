@@ -29,7 +29,7 @@ List of changes:
     ```
   - Changed `subscribe` to use a single parameter. The multiple parameter overloads are being depricated:
     ```
-                .subscribe({
+            .subscribe({
                 next: product => this.onProductRetrieved(product),
                 error: err => this.errorMessage = err
             });
