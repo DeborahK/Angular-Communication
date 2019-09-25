@@ -1,6 +1,6 @@
 # Changes:
 
-## September 25, 2019: Added a folder for the final course code updated to Angular v8.
+## Sept 25, 2019: Added a folder for the course code updated to Angular v8.
 
 Did not modify the course content, only added update code for Angular v8.
 
