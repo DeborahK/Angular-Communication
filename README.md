@@ -20,6 +20,21 @@ Materials for the "[Angular Component Communications](http://bit.ly/Angular-Comm
     ```
       @ViewChild(NgForm, { static: true }) editForm: NgForm;
     ```
+  - Changed to the new (in v6) pipeable operator syntax for Observables:
+    ```
+            return this.http.get<IProduct[]>(this.productsUrl)
+                        .pipe(
+                            tap(data => console.log(JSON.stringify(data))),
+                            catchError(this.handleError)
+                        );
+    ```
+  - Changed `subscribe` to use a single parameter. The multiple parameter overloads are being depricated:
+    ```
+                .subscribe({
+                next: product => this.onProductRetrieved(product),
+                error: err => this.errorMessage = err
+            });
+    ```
   - Minor modifications to pass the new linter (removing extraneous data types, etc)
 - Update to Bootstrap 4
   - Affected almost all HTML files
