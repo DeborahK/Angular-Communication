@@ -15,7 +15,7 @@ List of changes:
     ```
       @Injectable({ providedIn: 'root' })
     ```
-  - New (in V8) flag for ViewChild (read more here: https://angular.io/guide/static-query-migration):
+  - New (in v8) flag for ViewChild (read more here: https://angular.io/guide/static-query-migration):
     ```
       @ViewChild(NgForm, { static: true }) editForm: NgForm;
     ```
