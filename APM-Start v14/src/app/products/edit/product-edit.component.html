@@ -1,18 +1,17 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
+<div class="card">
+  <div class="card-header">
     {{pageTitle}}
   </div>
 
-  <div class="panel-body">
-    <form class="form-horizontal"
-          novalidate
+  <div class="card-body">
+    <form novalidate
           (ngSubmit)="saveProduct()">
       <fieldset *ngIf="product">
-        <div class="form-group"
-             [ngClass]="{'has-error': (productNameVar.touched || 
+        <div class="row mb-3"
+             [ngClass]="{'text-danger': (productNameVar.touched || 
                                                productNameVar.dirty || product.id !== 0) && 
                                                !productNameVar.valid }">
-          <label class="col-md-2 control-label"
+          <label class="col-md-2 form-label"
                  for="productNameId">Product Name</label>
 
           <div class="col-md-8">
@@ -25,7 +24,7 @@
                    [(ngModel)]=product.productName
                    name="productName"
                    #productNameVar="ngModel" />
-            <span class="help-block"
+            <span class="text-danger"
                   *ngIf="productNameVar.touched || productNameVar.dirty || product.id !== 0">
               <span *ngIf="productNameVar.errors?.['required']">
                 Product name is required.
@@ -37,11 +36,11 @@
           </div>
         </div>
 
-        <div class="form-group"
-             [ngClass]="{'has-error': (productCodeVar.touched || 
+        <div class="row mb-3"
+             [ngClass]="{'text-danger': (productCodeVar.touched || 
                                                productCodeVar.dirty || product.id !== 0) && 
                                                !productCodeVar.valid }">
-          <label class="col-md-2 control-label"
+          <label class="col-md-2 form-label"
                  for="productCodeId">Product Code</label>
 
           <div class="col-md-8">
@@ -53,7 +52,7 @@
                    [(ngModel)]=product.productCode
                    name="productCode"
                    #productCodeVar="ngModel" />
-            <span class="help-block"
+            <span class="text-danger"
                   *ngIf="productCodeVar.touched || productCodeVar.dirty || product.id !== 0">
               <span *ngIf="productCodeVar.errors?.['required']">
                 Product code is required.
@@ -62,8 +61,8 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="col-md-2 control-label"
+        <div class="row mb-3">
+          <label class="col-md-2 form-label"
                  for="descriptionId">Description</label>
 
           <div class="col-md-8">
@@ -80,25 +79,25 @@
         <div class="has-error"
              *ngIf="errorMessage">{{errorMessage}}</div>
 
-        <div class="form-group">
-          <div class="col-md-4 col-md-offset-2">
+        <div class="row">
+          <div class="offset-md-2 col-md-8 ">
             <span>
-              <button class="btn btn-primary"
+              <button class="btn btn-primary me-1"
                       type="submit"
-                      style="width:80px;margin-right:10px"
+                      style="width:80px"
                       [disabled]='!editForm?.valid'>
                 Save
               </button>
             </span>
             <span>
-              <a class="btn btn-default"
+              <a class="btn btn-outline-secondary me-1"
                  style="width:80px"
                  (click)="cancel()">
                 Cancel
               </a>
             </span>
             <span>
-              <a class="btn btn-default"
+              <a class="btn btn-outline-secondary"
                  style="width:80px"
                  (click)="deleteProduct()">
                 Delete

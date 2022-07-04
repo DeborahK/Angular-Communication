@@ -8,6 +8,7 @@ import { IProduct } from '../product';
 })
 export class ProductShellDetailComponent implements OnInit {
     pageTitle: string = 'Product Detail';
+    product!: IProduct;
 
     constructor(private productService: ProductService) { }
 

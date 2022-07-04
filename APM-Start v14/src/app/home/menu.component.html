@@ -1,28 +1,42 @@
 <nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="container-fluid">
     <a class="navbar-brand">{{pageTitle}}</a>
     <ul class="nav nav-pills">
-      <li routerLinkActive="active">
-        <a class='nav-link' routerLink='/welcome'>Home</a>
+      <li class='nav-item'>
+        <a class='nav-link'
+           routerLinkActive="active"
+           routerLink='/welcome'>Home</a>
       </li>
-      <li routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">
-        <a class='nav-link' routerLink='/products'>Product List</a>
+      <li class='nav-item'>
+        <a class='nav-link'
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           routerLink='/products'>Product List</a>
       </li>
-      <li routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">
-        <a class='nav-link' [routerLink]="['/products', 0, 'edit']">Add Product</a>
+      <li class='nav-item'>
+        <a class='nav-link'
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           [routerLink]="['/products', 0, 'edit']">Add Product</a>
       </li>
     </ul>
-    <ul class="nav navbar-right">
-      <li *ngIf="isLoggedIn">
-        <a class='nav-link' routerLink='/login'>Welcome {{ userName }}</a>
+    <ul class="nav ms-auto">
+      <li class='nav-item'
+          *ngIf="isLoggedIn">
+        <a class='nav-link'
+           routerLink='/login'>Welcome {{ userName }}</a>
       </li>
-      <li *ngIf="!isLoggedIn">
-        <a class='nav-link' routerLink='/login'>Log In</a>
+      <li class='nav-item'
+          *ngIf="!isLoggedIn">
+        <a class='nav-link'
+           routerLink='/login'>Log In</a>
       </li>
-      <li *ngIf="isLoggedIn">
-        <a (click)="logOut()"
+      <li class='nav-item'
+          *ngIf="isLoggedIn">
+        <a class='nav-link'
+           (click)="logOut()"
            style="cursor: pointer">Log Out</a>
       </li>
     </ul>
+  </div>
 </nav>
