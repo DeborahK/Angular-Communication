@@ -1,0 +1,70 @@
+﻿<div class='card'
+     *ngIf='product'>
+    <div class='card-header'>
+        {{pageTitle + ': ' + product.productName}}
+    </div>
+
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Name:</div>
+                    <div class='col-md-6'>{{product.productName}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Code:</div>
+                    <div class='col-md-6'>{{product.productCode | lowercase}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Description:</div>
+                    <div class='col-md-6'>{{product.description}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Availability:</div>
+                    <div class='col-md-6'>{{product.releaseDate}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Price:</div>
+                    <div class='col-md-6'>{{product.price|currency:'USD':'symbol'}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>5 Star Rating:</div>
+                    <div class='col-md-6'>
+                        <pm-star [rating]='product.starRating'>
+                        </pm-star>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-6'>
+                <img *ngIf='product.imageUrl'
+                     class='center-block img-responsive'
+                     [style.width.px]='200'
+                     [style.margin.px]='2'
+                     [src]='product.imageUrl'
+                     [title]='product.productName'>
+            </div>
+        </div>
+
+        <div class='row mt-4'>
+            <div class="col-md-4">
+                <a class='btn btn-outline-secondary mr-3'
+                   style='width:80px'
+                   (click)='onBack()'>
+                    <i class='fa fa-chevron-left'></i> Back
+                </a>
+                <a class="btn btn-primary"
+                   style="width:80px"
+                   [routerLink]="['/products', product.id, 'edit']">
+                    Edit
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf='errorMessage'
+     class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>

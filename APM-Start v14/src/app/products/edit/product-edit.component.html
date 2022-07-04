@@ -7,12 +7,14 @@
     <form novalidate
           (ngSubmit)="saveProduct()">
       <fieldset *ngIf="product">
-        <div class="row mb-3"
-             [ngClass]="{'text-danger': (productNameVar.touched || 
-                                               productNameVar.dirty || product.id !== 0) && 
-                                               !productNameVar.valid }">
+        <div class="row mb-3">
           <label class="col-md-2 form-label"
-                 for="productNameId">Product Name</label>
+                 for="productNameId"
+                 [ngClass]="{'text-danger': (productNameVar.touched || 
+                              productNameVar.dirty || product.id !== 0) && 
+                              !productNameVar.valid }">
+            Product Name
+          </label>
 
           <div class="col-md-8">
             <input class="form-control"
@@ -23,9 +25,11 @@
                    minlength="3"
                    [(ngModel)]=product.productName
                    name="productName"
-                   #productNameVar="ngModel" />
-            <span class="text-danger"
-                  *ngIf="productNameVar.touched || productNameVar.dirty || product.id !== 0">
+                   #productNameVar="ngModel"
+                   [ngClass]="{'is-invalid': (productNameVar.touched || 
+                              productNameVar.dirty || product.id !== 0) && 
+                              !productNameVar.valid }" />
+            <span class="invalid-feedback">
               <span *ngIf="productNameVar.errors?.['required']">
                 Product name is required.
               </span>
@@ -36,12 +40,14 @@
           </div>
         </div>
 
-        <div class="row mb-3"
-             [ngClass]="{'text-danger': (productCodeVar.touched || 
-                                               productCodeVar.dirty || product.id !== 0) && 
-                                               !productCodeVar.valid }">
+        <div class="row mb-3">
           <label class="col-md-2 form-label"
-                 for="productCodeId">Product Code</label>
+                 for="productCodeId"
+                 [ngClass]="{'text-danger': (productCodeVar.touched || 
+                                             productCodeVar.dirty || product.id !== 0) && 
+                                             !productCodeVar.valid }">
+            Product Code
+          </label>
 
           <div class="col-md-8">
             <input class="form-control"
@@ -51,9 +57,11 @@
                    required
                    [(ngModel)]=product.productCode
                    name="productCode"
-                   #productCodeVar="ngModel" />
-            <span class="text-danger"
-                  *ngIf="productCodeVar.touched || productCodeVar.dirty || product.id !== 0">
+                   #productCodeVar="ngModel"
+                   [ngClass]="{'is-invalid': (productCodeVar.touched || 
+                                              productCodeVar.dirty || product.id !== 0) && 
+                                              !productCodeVar.valid }" />
+            <span class="invalid-feedback">
               <span *ngIf="productCodeVar.errors?.['required']">
                 Product code is required.
               </span>

@@ -10,12 +10,14 @@
             #loginForm="ngForm"
             autocomplete="off">
         <fieldset>
-          <div class="row mb-3"
-               [ngClass]="{'text-danger': (userNameVar.touched || 
-                                                userNameVar.dirty) && 
-                                                !userNameVar.valid }">
+          <div class="row mb-3">
             <label class="col-md-2 form-label"
-                   for="userNameId">User Name</label>
+                   for="userNameId"
+                   [ngClass]="{'text-danger': (userNameVar.touched || 
+                                               userNameVar.dirty) && 
+                                               !userNameVar.valid }">
+              User Name
+            </label>
 
             <div class="col-md-8">
               <input class="form-control"
@@ -25,9 +27,11 @@
                      required
                      ngModel
                      name="userName"
-                     #userNameVar="ngModel" />
-              <span class="text-danger"
-                    *ngIf="userNameVar.touched || userNameVar.dirty">
+                     #userNameVar="ngModel"
+                     [ngClass]="{'is-invalid': (userNameVar.touched || 
+                                                userNameVar.dirty) && 
+                                                !userNameVar.valid }" />
+              <span class="invalid-feedback">
                 <span *ngIf="userNameVar.errors?.['required']">
                   User name is required.
                 </span>
@@ -35,12 +39,14 @@
             </div>
           </div>
 
-          <div class="row mb-3"
-               [ngClass]="{'text-danger': (passwordVar.touched || 
-                                                passwordVar.dirty) && 
-                                                !passwordVar.valid }">
+          <div class="row mb-3">
             <label class="col-md-2 form-label"
-                   for="passwordId">Password</label>
+                   for="passwordId"
+                   [ngClass]="{'text-danger': (passwordVar.touched || 
+                                               passwordVar.dirty) && 
+                                               !passwordVar.valid }">
+              Password
+            </label>
 
             <div class="col-md-8">
               <input class="form-control"
@@ -50,9 +56,11 @@
                      required
                      ngModel
                      name="password"
-                     #passwordVar="ngModel" />
-              <span class="text-danger"
-                    *ngIf="passwordVar.touched || passwordVar.dirty">
+                     #passwordVar="ngModel"
+                     [ngClass]="{'is-invalid': (passwordVar.touched || 
+                                                passwordVar.dirty) && 
+                                                !passwordVar.valid }" />
+              <span class="invalid-feedback">
                 <span *ngIf="passwordVar.errors?.['required']">
                   Password is required.
                 </span>

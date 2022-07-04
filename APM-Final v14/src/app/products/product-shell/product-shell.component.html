@@ -1,0 +1,14 @@
+<div class='row'
+     *ngIf='monthCount'>
+    <div class='col-md-4 mt-1'>
+        Number of months on the market: {{ monthCount }}
+    </div>
+</div>
+<div class='row'>
+    <div class='col-md-4'>
+        <pm-product-shell-list></pm-product-shell-list>
+    </div>
+    <div class='col-md-8'>
+        <pm-product-shell-detail></pm-product-shell-detail>
+    </div>
+</div>
