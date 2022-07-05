@@ -70,27 +70,24 @@
 
           <div class="row">
             <div class=" offset-md-2 col-md-4">
-              <span>
-                <button class="btn btn-primary me-1"
-                        type="submit"
-                        style="width:80px"
-                        [disabled]="!loginForm.valid">
-                  Log In
-                </button>
-              </span>
-              <span>
-                <button class="btn btn-outline-secondary"
-                        (click)="cancel()">
-                  Cancel
-                </button>
-              </span>
+              <button class="btn btn-primary me-1"
+                      type="submit"
+                      style="width:80px"
+                      [disabled]="!loginForm.valid">
+                Log In
+              </button>
+              <button class="btn btn-outline-secondary"
+                      (click)="cancel()">
+                Cancel
+              </button>
             </div>
           </div>
         </fieldset>
       </form>
-      <div class="has-error"
-           *ngIf="errorMessage">{{errorMessage}}</div>
     </div>
-
   </div>
-</div>
+
+  <div class="alert alert-danger"
+       *ngIf="errorMessage">
+    Error: {{errorMessage}}
+  </div>

@@ -19,7 +19,7 @@
     </div>
     <div class='table-responsive'>
       <table class='table'
-             *ngIf='products.length'>
+             *ngIf='products?.length'>
         <thead>
           <tr>
             <th>
@@ -70,7 +70,8 @@
 
   </div>
 </div>
-<div *ngIf='errorMessage'
-     class='alert alert-danger'>
+
+<div class='alert alert-danger'
+     *ngIf='errorMessage'>
   Error: {{ errorMessage }}
 </div>

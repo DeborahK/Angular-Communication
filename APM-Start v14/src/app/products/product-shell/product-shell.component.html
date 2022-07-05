@@ -13,3 +13,8 @@
         <pm-product-shell-detail></pm-product-shell-detail>
     </div>
 </div>
+
+<div class='alert alert-danger'
+     *ngIf='errorMessage'>
+  Error: {{ errorMessage }}
+</div>

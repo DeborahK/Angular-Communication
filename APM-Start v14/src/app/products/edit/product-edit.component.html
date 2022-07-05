@@ -5,6 +5,7 @@
 
   <div class="card-body">
     <form novalidate
+          #productEditForm="ngForm"
           (ngSubmit)="saveProduct()">
       <fieldset *ngIf="product">
         <div class="row mb-3">
@@ -77,47 +78,41 @@
             <textarea class="form-control"
                       id="descriptionId"
                       placeholder="Description"
-                      rows=3
-                      [(ngModel)]=product.description
+                      rows="3"
+                      [(ngModel)]="product.description"
                       name="description">
-                        </textarea>
+            </textarea>
           </div>
         </div>
 
-        <div class="has-error"
-             *ngIf="errorMessage">{{errorMessage}}</div>
-
         <div class="row">
           <div class="offset-md-2 col-md-8 ">
-            <span>
-              <button class="btn btn-primary me-1"
-                      type="submit"
-                      style="width:80px"
-                      [disabled]='!editForm?.valid'>
-                Save
-              </button>
-            </span>
-            <span>
-              <a class="btn btn-outline-secondary me-1"
-                 style="width:80px"
-                 (click)="cancel()">
-                Cancel
-              </a>
-            </span>
-            <span>
-              <a class="btn btn-outline-secondary"
-                 style="width:80px"
-                 (click)="deleteProduct()">
-                Delete
-              </a>
-            </span>
+            <button class="btn btn-primary me-1"
+                    type="submit"
+                    style="width:80px"
+                    [disabled]="!productEditForm.valid">
+              Save
+            </button>
+            <button class="btn btn-outline-secondary me-1"
+                    type="button"
+                    style="width:80px"
+                    (click)="cancel()">
+              Cancel
+            </button>
+            <button class="btn btn-outline-secondary"
+                    type="button"
+                    style="width:80px"
+                    (click)="deleteProduct()">
+              Delete
+            </button>
           </div>
         </div>
       </fieldset>
     </form>
   </div>
 </div>
-<div *ngIf='errorMessage'
-     class='alert alert-danger'>
+
+<div class='alert alert-danger'
+     *ngIf='errorMessage'>
   Error: {{ errorMessage }}
 </div>

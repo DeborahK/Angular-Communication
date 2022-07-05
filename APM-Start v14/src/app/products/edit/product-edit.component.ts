@@ -11,7 +11,7 @@ import { ProductService } from '../product.service';
 })
 export class ProductEditComponent implements OnInit {
   @ViewChild(NgForm) editForm: NgForm | null = null;
-  pageTitle: string = 'Product Edit';
+  pageTitle = 'Product Edit';
   errorMessage = '';
   private originalProduct: IProduct | null = null;
   product: IProduct | null = null;
@@ -70,7 +70,7 @@ export class ProductEditComponent implements OnInit {
           .subscribe({
             next: () => this.onSaveComplete(),
             error: err => this.errorMessage = err
-      });
+          });
       }
     } else {
       // Don't delete, it was never saved.
@@ -85,7 +85,7 @@ export class ProductEditComponent implements OnInit {
           next: () => {
             if (this.product && this.originalProduct) {
               // Assign the changes from the copy
-              this.originalProduct = {...this.originalProduct, ...this.product};
+              this.originalProduct = { ...this.originalProduct, ...this.product };
               this.onSaveComplete();
             }
           },

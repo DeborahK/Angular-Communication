@@ -2,23 +2,20 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 
-.nav-link {
-  font-size: large;
-  cursor: pointer;
-}
-
-.navbar-light .navbar-nav .nav-link.active {
-  background: gainsboro
-}
-
-div.card-header {
- font-size: large;
-}
-
 div.card {
   margin-top: 10px
 }
 
+div.card-header {
+  font-size: large;
+  background-color: #337AB7;
+  color: white;
+}
+
 .table {
   margin-top: 10px
+}
+
+a {
+  text-decoration: none;
 }

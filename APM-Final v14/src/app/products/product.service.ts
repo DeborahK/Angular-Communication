@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of, Subject, BehaviorSubject, throwError } from 'rxjs';
-
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 
 import { IProduct } from './product';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ProductService {
     private productsUrl = 'api/products';
@@ -53,13 +51,13 @@ export class ProductService {
             );
     }
 
-    saveProduct(product: IProduct): Observable<IProduct> {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        if (product.id === 0) {
-            return this.createProduct(product, headers);
-        }
-        return this.updateProduct(product, headers);
+  saveProduct(product: IProduct): Observable<IProduct> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    if (product.id === 0) {
+      return this.createProduct(product, headers);
     }
+    return this.updateProduct(product, headers);
+  }
 
     deleteProduct(id: number): Observable<IProduct> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -95,45 +93,45 @@ export class ProductService {
             );
     }
 
-    private updateProduct(product: IProduct, headers: HttpHeaders): Observable<IProduct> {
-        const url = `${this.productsUrl}/${product.id}`;
-        return this.http.put<IProduct>(url, product, { headers })
-            .pipe(
-                tap(data => console.log('updateProduct: ' + product.id)),
-                catchError(this.handleError)
-            );
-    }
+  private updateProduct(product: IProduct, headers: HttpHeaders): Observable<IProduct> {
+    const url = `${this.productsUrl}/${product.id}`;
+    return this.http.put<IProduct>(url, product, { headers })
+      .pipe(
+        tap(data => console.log('updateProduct: ' + product.id)),
+        catchError(this.handleError)
+      );
+  }
 
-    private initializeProduct(): IProduct {
-        // Return an initialized object
-        return {
-            id: 0,
-            productName: '',
-            productCode: '',
-            category: '',
-            tags: [],
-            releaseDate: '',
-            price: 0,
-            description: '',
-            starRating: 0,
-            imageUrl: ''
-        };
-    }
+  private initializeProduct(): IProduct {
+    // Return an initialized object
+    return {
+      id: 0,
+      productName: '',
+      productCode: '',
+      category: '',
+      tags: [],
+      releaseDate: '',
+      price: 0,
+      description: '',
+      starRating: 0,
+      imageUrl: ''
+    };
+  }
 
-    private handleError(err: HttpErrorResponse) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        let errorMessage: string;
-        if (err.error instanceof Error) {
-            // A client-side or network error occurred. Handle it accordingly.
-            errorMessage = `An error occurred: ${err.error.message}`;
-        } else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            errorMessage = `Backend returned code ${err.status}, body was: ${err.error}`;
-        }
-        console.error(err);
-        return throwError(errorMessage);
+  private handleError(err: HttpErrorResponse): Observable<never> {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
     }
+    console.error(errorMessage);
+    return throwError(() => errorMessage);
+  }
 
 }

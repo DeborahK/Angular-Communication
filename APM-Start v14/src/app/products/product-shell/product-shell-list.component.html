@@ -1,4 +1,5 @@
-<div class='card' *ngIf='products?.length'>
+<div class='card'
+     *ngIf='products?.length'>
   <div class='card-heading'>
     {{pageTitle}}
   </div>
@@ -13,6 +14,8 @@
     </div>
   </div>
 </div>
-<div *ngIf='errorMessage' class='alert alert-danger'>
+
+<div class='alert alert-danger'
+     *ngIf='errorMessage'>
   Error: {{ errorMessage }}
 </div>
