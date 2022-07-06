@@ -23,7 +23,7 @@ but coding along with **Angular v14**
 
   > See the [`Angular: Getting Started`](https://app.pluralsight.com/library/courses/angular-2-getting-started-update) or the [`RxJS in Angular: Reactive Development`](https://app.pluralsight.com/library/courses/rxjs-angular-reactive-development) course on Pluralsight for more information about RxJS.
   
-  ## Module 2
+## Module 2
 - The blog is no longer maintained. Please use [the GitHub repository](https://github.com/DeborahK/Angular-Communication) for the most up-to-date information about this course.
 - If you are new to Angular, consider watching the [`Angular: Getting Started`](https://app.pluralsight.com/library/courses/angular-2-getting-started-update) course first. Note that the `Angular First Look` course has not been updated for recent versions of Angular.
 - Consider using the `APM-Start v14` files to code along with this course. The original `APM-Start` files are for Angular v5 and don't install easily with current versions of node. Use these course notes while coding along for any changes to the entered code, primarily for strict typing.
