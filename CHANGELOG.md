@@ -24,7 +24,7 @@ List of changes:
   - Many of the class names were changed.
   - Validation classes were changed.
 
->See the COURSENOTES-v14 file for module by module details.
+>See the [course notes](https://github.com/DeborahK/Angular-Communication/blob/master/COURSENOTES-v14.md) for the module by module details for coding along with Angular v14.
 
 ## Sept 25, 2019: Added a folder for the course code updated to Angular v8.
 
