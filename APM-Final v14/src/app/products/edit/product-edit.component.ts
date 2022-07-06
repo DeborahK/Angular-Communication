@@ -87,7 +87,6 @@ export class ProductEditComponent implements OnInit {
               // Assign the changes from the copy
               for (let key in this.product) 
                 (this.originalProduct as any)[key as keyof IProduct] = this.product[key as keyof IProduct];
-              //this.originalProduct = { ...this.originalProduct, ...this.product };
               this.onSaveComplete();
             }
           },

@@ -103,19 +103,6 @@ export class ProductService {
       .pipe(
         // The put does *not* return the updated item.
         tap(() => console.log('updateProduct: ', product.id)),
-        // Update the item in the cached list.
-        // tap(() => {
-        //   if (this.products) {
-        //     this.products = this.products.map(item => {
-        //       if (item.id === product.id) {
-        //         console.log('update', JSON.stringify({ ...item, ...product }))
-        //         return { ...item, ...product };
-        //       }
-        //       return item;
-        //     });
-        //     this.changeSelectedProduct(product);
-        //   }
-        // }),
         catchError(this.handleError)
       );
   }

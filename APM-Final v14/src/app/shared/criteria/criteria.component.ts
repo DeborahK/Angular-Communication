@@ -15,6 +15,7 @@ export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() valueChange: EventEmitter<string> =
     new EventEmitter<string>();
 
+  // Get the element from the template to set focus
   @ViewChild('filterElement') filterElementRef?: ElementRef;
 
   private _listFilter = '';

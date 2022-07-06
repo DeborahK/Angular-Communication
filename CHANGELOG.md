@@ -1,6 +1,6 @@
 # Changes:
 
-## July 5, 2022: Added folders for the course code updated to Angular v14
+## July 6, 2022: Added folders for the course code updated to Angular v14
 
 Did not modify the course content (not approved by Pluralsight), only added updated code for Angular v14.
 
@@ -18,10 +18,13 @@ List of changes:
     
 - Update to RxJS 7
   - All imports are now from 'rxjs'.
+  - Subscribe signature changed.
 
 - Update to Bootstrap 5
   - Many of the class names were changed.
   - Validation classes were changed.
+
+>See the COURSENOTES-v14 file for module by module details.
 
 ## Sept 25, 2019: Added a folder for the course code updated to Angular v8.
 

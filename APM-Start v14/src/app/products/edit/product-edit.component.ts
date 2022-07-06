@@ -85,7 +85,8 @@ export class ProductEditComponent implements OnInit {
           next: () => {
             if (this.product && this.originalProduct) {
               // Assign the changes from the copy
-              this.originalProduct = { ...this.originalProduct, ...this.product };
+              for (let key in this.product) 
+                (this.originalProduct as any)[key as keyof IProduct] = this.product[key as keyof IProduct];
               this.onSaveComplete();
             }
           },

@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
 
   performFilter(filterBy?: string): void {
     if (filterBy) {
-      this.filteredProducts = this.products.filter((product: IProduct) =>
+      this.filteredProducts = this.products.filter(product =>
         product.productName.toLocaleLowerCase().indexOf(filterBy.toLocaleLowerCase()) !== -1);
     } else {
       this.filteredProducts = this.products;

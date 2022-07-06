@@ -16,9 +16,9 @@ import { ProductShellComponent } from './product-shell/product-shell.component';
   imports: [
     SharedModule,
     RouterModule.forChild([
-      //{ path: '', component: ProductShellComponent },
+      { path: '', component: ProductShellComponent },
       // To execute the original user interface
-      { path: '', component: ProductListComponent },
+      // { path: '', component: ProductListComponent },
       { path: ':id', component: ProductDetailComponent },
       {
         path: ':id/edit',
