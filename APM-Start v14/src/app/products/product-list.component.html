@@ -7,24 +7,20 @@
     <div class='row'>
       <div class='col-md-2'>Filter by:</div>
       <div class='col-md-4'>
-        <input type='text'
-               [(ngModel)]='listFilter' />
+        <input type='text' [(ngModel)]='listFilter' />
       </div>
     </div>
-    <div class='row'
-         [hidden]='!listFilter'>
+    <div class='row' [hidden]='!listFilter'>
       <div class='col-md-10'>
         <h4>Filtered by: {{listFilter}}</h4>
       </div>
     </div>
     <div class='table-responsive'>
-      <table class='table'
-             *ngIf='products?.length'>
+      <table class='table' *ngIf='products && products.length'>
         <thead>
           <tr>
             <th>
-              <button class='btn btn-primary'
-                      (click)='toggleImage()'>
+              <button class='btn btn-primary' (click)='toggleImage()'>
                 {{showImage ? 'Hide' : 'Show'}} Image
               </button>
             </th>
@@ -39,11 +35,8 @@
         <tbody>
           <tr *ngFor='let product of filteredProducts'>
             <td>
-              <img *ngIf='showImage && product.imageUrl'
-                   [src]='product.imageUrl'
-                   [title]='product.productName'
-                   [style.width.px]='imageWidth'
-                   [style.margin.px]='imageMargin'>
+              <img *ngIf='showImage && product.imageUrl' [src]='product.imageUrl' [title]='product.productName'
+                [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
             </td>
             <td>
               <a [routerLink]="['/products', product.id]">
@@ -58,10 +51,9 @@
               </pm-star>
             </td>
             <td>
-              <a class="btn btn-primary"
-                 [routerLink]="['/products', product.id, 'edit']">
+              <button class="btn btn-primary" type="button" [routerLink]="['/products', product.id, 'edit']">
                 Edit
-              </a>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -71,7 +63,6 @@
   </div>
 </div>
 
-<div class='alert alert-danger'
-     *ngIf='errorMessage'>
+<div class='alert alert-danger' *ngIf='errorMessage'>
   Error: {{ errorMessage }}
 </div>

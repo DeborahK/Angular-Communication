@@ -10,11 +10,11 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-  @ViewChild(NgForm) editForm: NgForm | null = null;
+  @ViewChild(NgForm) editForm?: NgForm;
   pageTitle = 'Product Edit';
   errorMessage = '';
-  private originalProduct: IProduct | null = null;
-  product: IProduct | null = null;
+  private originalProduct?: IProduct;
+  product?: IProduct;
 
   get isDirty(): boolean {
     return this.editForm?.dirty ? true : false;

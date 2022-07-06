@@ -8,19 +8,18 @@ import { ProductService } from '../product.service';
   templateUrl: './product-shell-list.component.html'
 })
 export class ProductShellListComponent implements OnInit {
-  pageTitle: string = 'Products';
-  errorMessage: string;
-  products: IProduct[];
+  pageTitle = 'Products';
+  products: IProduct[] = [];
+  errorMessage = '';
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(
-      (products: IProduct[]) => {
-        this.products = products;
-      },
-      (error: any) => this.errorMessage = <any>error
-    );
+    this.productService.getProducts().subscribe({
+      next: products => this.products = products,
+      error: err => this.errorMessage = err
+    });
+
   }
 
 }

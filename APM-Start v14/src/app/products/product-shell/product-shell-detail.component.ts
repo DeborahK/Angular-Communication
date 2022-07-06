@@ -7,8 +7,10 @@ import { IProduct } from '../product';
     templateUrl: './product-shell-detail.component.html'
 })
 export class ProductShellDetailComponent implements OnInit {
-    pageTitle: string = 'Product Detail';
-    product!: IProduct;
+  pageTitle = 'Product Detail';
+  // Need to handle null to allow for no selected product.
+  product: IProduct | null = null;  
+  errorMessage = '';
 
     constructor(private productService: ProductService) { }
 

@@ -45,21 +45,18 @@
              [title]='product.productName'>
       </div>
     </div>
+  </div>
 
-    <div class='row mt-4'>
-      <div class="col-md-4">
-        <button class="btn btn-primary"
-                type="button"
-                style="width:80px"
-                [routerLink]="['/products', product.id, 'edit']">
-          Edit
-        </button>
-      </div>
-    </div>
+  <div class='card-footer'>
+    <button class="btn btn-primary"
+            style="width:80px"
+            [routerLink]="['/products', product.id, 'edit']">
+      Edit
+    </button>
   </div>
 </div>
 
-<div *ngIf='errorMessage'
-     class='alert alert-danger'>
+<div class='alert alert-danger'
+     *ngIf='errorMessage'>
   Error: {{ errorMessage }}
 </div>

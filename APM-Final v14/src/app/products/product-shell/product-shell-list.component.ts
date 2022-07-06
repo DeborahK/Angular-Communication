@@ -10,10 +10,12 @@ import { Subscription } from 'rxjs';
 })
 export class ProductShellListComponent implements OnInit, OnDestroy {
   pageTitle = 'Products';
-  errorMessage: string;
-  products: IProduct[];
-  selectedProduct: IProduct | null;
-  sub: Subscription;
+  products: IProduct[] = [];
+  errorMessage = '';
+
+  // Need to handle null to allow for no selected product.
+  selectedProduct: IProduct | null = null;
+  sub?: Subscription;
 
   constructor(private productService: ProductService) { }
 
@@ -23,9 +25,7 @@ export class ProductShellListComponent implements OnInit, OnDestroy {
     );
 
     this.productService.getProducts().subscribe({
-      next: (products: IProduct[]) => {
-        this.products = products;
-      },
+      next: products => this.products = products,
       error: err => this.errorMessage = err
     });
   }
@@ -35,7 +35,9 @@ export class ProductShellListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }

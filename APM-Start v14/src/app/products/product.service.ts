@@ -47,7 +47,7 @@ export class ProductService {
     const url = `${this.productsUrl}/${id}`;
     return this.http.delete<IProduct>(url, { headers })
       .pipe(
-        tap(data => console.log('deleteProduct: ' + id)),
+        tap(() => console.log('deleteProduct: ' + id)),
         catchError(this.handleError)
       );
   }
@@ -56,7 +56,7 @@ export class ProductService {
     product.id = null;
     return this.http.post<IProduct>(this.productsUrl, product, { headers })
       .pipe(
-        tap(data => console.log('createProduct: ' + JSON.stringify(data))),
+        tap(createdProduct => console.log('createProduct: ' + JSON.stringify(createdProduct))),
         catchError(this.handleError)
       );
   }
@@ -65,7 +65,7 @@ export class ProductService {
     const url = `${this.productsUrl}/${product.id}`;
     return this.http.put<IProduct>(url, product, { headers })
       .pipe(
-        tap(data => console.log('updateProduct: ' + product.id)),
+        tap(() => console.log('updateProduct: ' + product.id)),
         catchError(this.handleError)
       );
   }
@@ -90,13 +90,14 @@ export class ProductService {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
     let errorMessage = '';
-    if (err.error instanceof ErrorEvent) {
+    console.log(err);
+    if (err.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
-      errorMessage = `An error occurred: ${err.error.message}`;
+      errorMessage = `An error occurred: ${err.error}`;
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+      errorMessage = `Server returned: ${err.statusText}, error message is: ${err.error}`;
     }
     console.error(errorMessage);
     return throwError(() => errorMessage);

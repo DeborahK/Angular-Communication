@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit,
-         Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import {
+  Component, OnInit, ViewChild, ElementRef, AfterViewInit,
+  Input, OnChanges, SimpleChanges, EventEmitter, Output
+} from '@angular/core';
 
 @Component({
   selector: 'pm-criteria',
@@ -7,19 +9,20 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit,
   styleUrls: ['./criteria.component.css']
 })
 export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
-  @Input() displayDetail: boolean;
-  @Input() hitCount: number;
-  hitMessage: string;
+  @Input() displayDetail = false;
+  @Input() hitCount = 0;
+  hitMessage = '';
   @Output() valueChange: EventEmitter<string> =
-              new EventEmitter<string>();
+    new EventEmitter<string>();
 
-  @ViewChild('filterElement', { static: false }) filterElementRef: ElementRef;
+  @ViewChild('filterElement') filterElementRef?: ElementRef;
 
-  private _listFilter: string;
+  private _listFilter = '';
   get listFilter(): string {
     return this._listFilter;
   }
   set listFilter(value: string) {
+    // Only emit if the value was changed
     this._listFilter = value;
     this.valueChange.emit(value);
   }
@@ -27,7 +30,7 @@ export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
   constructor() { }
 
   ngAfterViewInit(): void {
-    if (this.filterElementRef.nativeElement) {
+    if (this.filterElementRef?.nativeElement) {
       this.filterElementRef.nativeElement.focus();
     }
   }

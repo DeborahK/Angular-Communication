@@ -35,12 +35,16 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
-      next: (products: IProduct[]) => {
+      next: products => {
         this.products = products;
-        if (this.filterComponent) {
-          this.filterComponent.listFilter =
-            this.productParameterService.filterBy;
-        }
+        // Allows referencing the ViewChild property in ngOnInit and
+        // Prevents the 'Expression has changed after it was checked' error 
+        setTimeout(() => {
+          if (this.filterComponent) {
+            this.filterComponent.listFilter =
+              this.productParameterService.filterBy;
+          }
+        })
       },
       error: err => this.errorMessage = err
     });
@@ -57,7 +61,7 @@ export class ProductListComponent implements OnInit {
 
   performFilter(filterBy?: string): void {
     if (filterBy) {
-      this.filteredProducts = this.products.filter((product: IProduct) =>
+      this.filteredProducts = this.products.filter(product =>
         product.productName.toLocaleLowerCase().indexOf(filterBy.toLocaleLowerCase()) !== -1);
     } else {
       this.filteredProducts = this.products;
