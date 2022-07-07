@@ -16,6 +16,7 @@ but coding along with **Angular v14**
   - Many of the `nav` style classes.
   - Many of the form style classes.
   - Many of the validation style classes.
+  - Bootstrap no longer provides icons, use font-awesome instead for fonts.
 - Updated from RxJS v5 to v7 which changed:
   - How RxJS creation functions and operators are imported. Everything is now imported from `rxjs`.
   - Syntax of the `subscribe` method. It now only takes one parameter: either the next function or an object with `next` and `complete` properties.
